@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+<!-- AGENT-MEMORY:BEGIN -->
+- Portfolio media (portrait in src/assets, resume PDF in public/) lives in the repo, not the Lovable asset CDN, because the owner deploys to Vercel where /__l5e/ asset URLs don't resolve.
+- Portfolio content (resume facts, links, projects) lives in src/components/portfolio/data.ts; sections read from it so edits happen in one place.
+<!-- AGENT-MEMORY:END -->
