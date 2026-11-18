@@ -16,12 +16,12 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "rounded-full bg-primary text-primary-foreground font-medium shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-lift",
+        hero: "rounded-lg bg-primary text-primary-foreground font-semibold shadow-glow transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90",
         glass:
-          "rounded-full border border-border bg-card text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/40",
-        ink: "rounded-full bg-ink-foreground text-ink font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink-foreground/90",
+          "rounded-lg border border-border bg-card text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/60 hover:text-primary",
+        ink: "rounded-lg bg-primary text-primary-foreground font-semibold shadow-glow transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90",
         inkOutline:
-          "rounded-full border border-ink-border text-ink-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-ink-foreground/60",
+          "rounded-lg border border-ink-border text-ink-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/60 hover:text-primary",
       },
       size: {
         default: "h-9 px-4 py-2",

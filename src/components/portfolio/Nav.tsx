@@ -46,7 +46,7 @@ export function Nav() {
       />
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <a href="#top" className="flex items-center gap-2.5" aria-label="Back to top">
-          <span className="grid size-9 place-items-center rounded-full bg-ink font-display text-base text-ink-foreground italic">
+          <span className="grid size-9 place-items-center rounded-lg border border-primary/50 bg-primary-soft font-mono text-sm font-semibold text-primary">
             VB
           </span>
           <span className="text-[15px] font-medium">{profile.name}</span>
@@ -58,8 +58,8 @@ export function Nav() {
               <a
                 href={`#${n.id}`}
                 className={cn(
-                  "text-sm transition-colors",
-                  active === n.id ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+                  "font-mono text-[13px] transition-colors",
+                  active === n.id ? "text-primary" : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {n.label}
@@ -98,7 +98,7 @@ export function Nav() {
               <a
                 href={`#${n.id}`}
                 onClick={() => setOpen(false)}
-                className="block border-b border-border py-3 font-display text-2xl"
+                className="block border-b border-border py-3 font-display text-xl"
               >
                 {n.label}
               </a>

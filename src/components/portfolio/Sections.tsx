@@ -33,6 +33,7 @@ import {
 } from "./data";
 import { useCountUp, useInView } from "./hooks";
 import { Em, Reveal, SectionHeading } from "./Reveal";
+import { CountUp } from "./CountUp";
 
 /* ---------------- Stats ---------------- */
 function Stat({ s, start, i }: { s: (typeof stats)[number]; start: boolean; i: number }) {
@@ -43,14 +44,14 @@ function Stat({ s, start, i }: { s: (typeof stats)[number]; start: boolean; i: n
       data-in={start}
       style={{ "--delay": `${i * 100}ms` } as CSSProperties}
     >
-      <strong className="block font-display text-5xl font-normal tabular-nums md:text-6xl">
+      <strong className="block font-display text-5xl font-semibold tracking-tight tabular-nums md:text-6xl">
         {v.toLocaleString("en-US", {
           minimumFractionDigits: s.decimals,
           maximumFractionDigits: s.decimals,
         })}
         <span className="text-primary">{s.suffix}</span>
       </strong>
-      <span className="mt-2 block text-sm text-muted-foreground">{s.label}</span>
+      <span className="mt-2 block font-mono text-xs text-muted-foreground">{s.label}</span>
     </div>
   );
 }
@@ -193,7 +194,7 @@ export function Experience() {
                       {t.tags?.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
+                          className="rounded-md border border-border bg-muted px-2.5 py-1 font-mono text-[11px] text-muted-foreground"
                         >
                           {tag}
                         </span>
@@ -253,7 +254,7 @@ function ProjectCard({ p }: { p: Project }) {
                 {p.metrics.map((m) => (
                   <div key={m.label} className="flex items-baseline justify-between border-b border-border pb-4">
                     <span className="text-sm text-muted-foreground">{m.label}</span>
-                    <strong className="font-display text-4xl font-normal">{m.value}</strong>
+                    <CountUp value={m.value} className="font-display text-4xl font-semibold text-primary" />
                   </div>
                 ))}
               </div>
@@ -263,7 +264,7 @@ function ProjectCard({ p }: { p: Project }) {
                 {p.tags.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
+                    className="rounded-md border border-border bg-muted px-2.5 py-1 font-mono text-[11px] text-muted-foreground"
                   >
                     {t}
                   </span>
@@ -346,7 +347,7 @@ export function Skills() {
                     {g.items.map((s) => (
                       <li
                         key={s}
-                        className="rounded-full border border-border bg-muted px-3 py-1.5 text-sm text-foreground/80"
+                        className="rounded-md border border-border bg-muted px-3 py-1.5 font-mono text-xs text-foreground/80 transition-colors hover:border-primary/60 hover:text-primary"
                       >
                         {s}
                       </li>
@@ -359,11 +360,11 @@ export function Skills() {
         </div>
       </div>
       <div className="mask-fade-x mt-20 overflow-hidden border-y border-border py-6" aria-hidden="true">
-        <div className="animate-marquee flex w-max gap-10 font-display text-3xl text-muted-foreground italic md:text-4xl">
+        <div className="animate-marquee flex w-max gap-10 font-mono text-2xl text-muted-foreground md:text-3xl">
           {[...marquee, ...marquee].map((m, i) => (
             <span key={i} className="flex items-center gap-10">
               {m}
-              <span className="text-xl text-primary not-italic">·</span>
+              <span className="text-primary">/</span>
             </span>
           ))}
         </div>
@@ -439,19 +440,20 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-ink text-ink-foreground">
-      <div className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+    <section id="contact" className="relative overflow-hidden border-t border-ink-border bg-ink text-ink-foreground">
+      <div aria-hidden="true" className="cyber-grid pointer-events-none absolute inset-0" />
+      <div className="relative mx-auto max-w-6xl px-6 py-28 md:py-36">
         <Reveal>
           <p className="font-mono text-xs tracking-[0.18em] text-ink-muted uppercase">
-            06 / Contact
+            <span className="text-primary">// 06</span> Contact
           </p>
           <h2 className="mt-8 max-w-4xl text-5xl leading-[1.02] md:text-7xl">
-            Have a role or project in mind? <em className="italic text-ink-muted">Let&apos;s talk.</em>
+            Have a role or project in mind? <span className="text-primary">Let&apos;s talk.</span>
           </h2>
           <div className="mt-12 flex flex-wrap items-center gap-3">
             <a
               href={`mailto:${profile.email}`}
-              className="link-underline font-display text-3xl md:text-5xl"
+              className="link-underline font-mono text-2xl text-primary md:text-4xl"
             >
               {profile.email}
             </a>

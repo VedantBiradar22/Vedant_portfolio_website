@@ -12,36 +12,37 @@ export function Hero() {
   const word = profile.heroWords[wi] ?? profile.heroWords[0];
 
   return (
-    <section id="top" className="relative overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32">
-      <div aria-hidden="true" className="dot-grid pointer-events-none absolute inset-0" />
+    <section id="top" className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+      <div aria-hidden="true" className="cyber-grid pointer-events-none absolute inset-0" />
+      <div aria-hidden="true" className="glow-orb pointer-events-none absolute -top-40 right-0 size-[640px]" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-6 lg:grid-cols-[1.25fr_1fr] lg:gap-20">
-        <div>
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-[1.35fr_1fr] lg:gap-20">
+        {/* Text — left */}
+        <div className="order-2 md:order-1">
           <div
-            className="animate-rise inline-flex items-center gap-2.5 rounded-full border border-border bg-card py-1.5 pr-4 pl-3 text-sm shadow-soft"
+            className="animate-rise inline-flex items-center gap-2.5 rounded-md border border-border bg-card/80 py-1.5 pr-3.5 pl-3 font-mono text-xs"
             style={d(0)}
           >
             <span className="animate-ping-soft size-2 rounded-full bg-success" />
             <span className="text-muted-foreground">
-              {profile.role} at{" "}
-              <span className="font-medium text-foreground">{profile.companyShort}</span>
+              status: <span className="text-success">online</span> · {profile.role} @{" "}
+              <span className="text-foreground">{profile.companyShort}</span>
             </span>
           </div>
 
-          <h1 className="animate-rise mt-8 text-[clamp(3.25rem,8vw,6.5rem)] leading-[0.95]" style={d(120)}>
+          <h1 className="animate-rise mt-7 text-[clamp(3rem,7vw,5.75rem)] leading-[0.95]" style={d(120)}>
             Vedant
             <br />
-            Biradar<span className="text-primary">.</span>
+            <span className="text-primary">Biradar</span>
+            <span className="text-muted-foreground">_</span>
           </h1>
 
-          <p className="animate-rise mt-6 font-display text-3xl leading-tight md:text-4xl" style={d(240)}>
-            Building{" "}
-            <span className="relative inline-block">
-              <em key={word} className="animate-word inline-block text-primary italic">
-                {word}
-              </em>
-            </span>{" "}
-            software with AI.
+          <p className="animate-rise mt-6 font-mono text-lg md:text-xl" style={d(240)}>
+            <span className="text-muted-foreground">&gt; building </span>
+            <span key={word} className="animate-word inline-block text-primary">
+              {word}
+            </span>
+            <span className="text-muted-foreground"> software with AI</span>
           </p>
 
           <p className="animate-rise mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground" style={d(360)}>
@@ -50,7 +51,7 @@ export function Hero() {
             now ship production software at Technomold.
           </p>
 
-          <div className="animate-rise mt-10 flex flex-wrap gap-3" style={d(480)}>
+          <div className="animate-rise mt-9 flex flex-wrap gap-3" style={d(480)}>
             <Button asChild variant="hero" size="xl">
               <a href="#projects">
                 View my work <ArrowRight />
@@ -64,7 +65,7 @@ export function Hero() {
           </div>
 
           <div
-            className="animate-rise mt-10 flex flex-wrap items-center gap-5 text-sm text-muted-foreground"
+            className="animate-rise mt-9 flex flex-wrap items-center gap-4 text-sm text-muted-foreground"
             style={d(600)}
           >
             {[
@@ -77,32 +78,35 @@ export function Hero() {
                 href={href}
                 aria-label={label}
                 {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="grid size-10 place-items-center rounded-full border border-border bg-card transition-colors hover:border-foreground/40 hover:text-foreground"
+                className="grid size-10 place-items-center rounded-lg border border-border bg-card transition-colors hover:border-primary/60 hover:text-primary"
               >
                 <Icon className="size-4" />
               </a>
             ))}
-            <span className="flex items-center gap-1.5">
+            <span className="flex items-center gap-1.5 font-mono text-xs">
               <MapPin className="size-4" /> {profile.location}
             </span>
           </div>
         </div>
 
-        {/* Portrait */}
-        <div className="animate-rise relative mx-auto w-full max-w-[400px] lg:mr-0" style={d(200)}>
-          <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-muted shadow-lift">
+        {/* Portrait — right */}
+        <div
+          className="animate-rise relative order-1 mx-auto w-full max-w-[300px] md:order-2 md:mr-0 md:max-w-[380px]"
+          style={d(200)}
+        >
+          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-primary/30 bg-muted shadow-lift">
             <img
               src={portrait}
               alt="Portrait of Vedant Biradar"
-              className="size-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              className="size-full object-cover object-top"
               width={900}
               height={1125}
               fetchPriority="high"
             />
           </div>
 
-          <div className="absolute -bottom-6 -left-4 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-lift sm:-left-8">
-            <span className="grid size-10 place-items-center rounded-xl bg-primary-soft text-primary">
+          <div className="absolute -bottom-5 -left-3 flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 shadow-soft sm:-left-6">
+            <span className="grid size-9 place-items-center rounded-lg bg-primary-soft text-primary">
               <Briefcase className="size-4" />
             </span>
             <div className="leading-tight">

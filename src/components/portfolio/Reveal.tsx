@@ -36,8 +36,8 @@ export function SectionHeading({
 }) {
   return (
     <Reveal className="mb-14 grid gap-6 border-t border-border pt-8 md:grid-cols-[200px_1fr] md:gap-10">
-      <p className="font-mono text-xs tracking-[0.18em] text-muted-foreground uppercase">
-        <span className="text-primary">{index}</span> / {kicker}
+      <p className="font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase">
+        <span className="text-primary">// {index}</span> {kicker}
       </p>
       <div className="flex flex-wrap items-end justify-between gap-6">
         <h2 className="max-w-3xl text-4xl leading-[1.05] md:text-6xl">{title}</h2>
@@ -47,7 +47,7 @@ export function SectionHeading({
   );
 }
 
-/** Italic accent word inside serif headings. */
+/** Accent words inside headings. */
 export function Em({ children }: { children: ReactNode }) {
-  return <em className="text-primary italic">{children}</em>;
+  return <span className="text-primary">{children}</span>;
 }
