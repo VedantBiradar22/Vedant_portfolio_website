@@ -23,14 +23,31 @@ export function Reveal({ children, className, delay = 0, as: Tag = "div" }: Prop
   );
 }
 
-export function SectionHeading({ kicker, title }: { kicker: string; title: ReactNode }) {
+export function SectionHeading({
+  index,
+  kicker,
+  title,
+  aside,
+}: {
+  index: string;
+  kicker: string;
+  title: ReactNode;
+  aside?: ReactNode;
+}) {
   return (
-    <Reveal className="mb-14">
-      <p className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.25em] text-primary uppercase">
-        <span className="h-px w-10 bg-primary" />
-        {kicker}
+    <Reveal className="mb-14 grid gap-6 border-t border-border pt-8 md:grid-cols-[200px_1fr] md:gap-10">
+      <p className="font-mono text-xs tracking-[0.18em] text-muted-foreground uppercase">
+        <span className="text-primary">{index}</span> / {kicker}
       </p>
-      <h2 className="max-w-3xl text-4xl leading-[1.05] font-semibold md:text-6xl">{title}</h2>
+      <div className="flex flex-wrap items-end justify-between gap-6">
+        <h2 className="max-w-3xl text-4xl leading-[1.05] md:text-6xl">{title}</h2>
+        {aside}
+      </div>
     </Reveal>
   );
+}
+
+/** Italic accent word inside serif headings. */
+export function Em({ children }: { children: ReactNode }) {
+  return <em className="text-primary italic">{children}</em>;
 }

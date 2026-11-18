@@ -12,12 +12,7 @@ export const profile = {
   linkedin: "https://linkedin.com/in/vedant-biradar-483a60334",
   github: "https://github.com/VedantBiradar22",
   resume: "/Vedant_Biradar_Resume.pdf",
-  roles: [
-    "Associate Software Engineer",
-    "AI / ML Engineer",
-    "Computer Vision Developer",
-    "Deep Learning Enthusiast",
-  ],
+  heroWords: ["intelligent", "reliable", "data-driven", "scalable"],
 };
 
 export const navItems = [

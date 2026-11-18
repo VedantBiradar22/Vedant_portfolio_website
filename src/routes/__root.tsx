@@ -85,7 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Vedant Biradar — Portfolio" },
       { name: "description", content: "Vedant Biradar, Associate Software Engineer and AI/ML developer." },
       { name: "author", content: "Vedant Biradar" },
-      { name: "theme-color", content: "#0f141c" },
+      { name: "theme-color", content: "#faf8f4" },
       { property: "og:title", content: "Vedant Biradar — Portfolio" },
       { property: "og:description", content: "Vedant Biradar, Associate Software Engineer and AI/ML developer." },
       { property: "og:type", content: "website" },
@@ -101,7 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap",
       },
     ],
   }),
@@ -113,7 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
@@ -132,7 +132,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      <Toaster theme="dark" position="bottom-center" />
+      <Toaster theme="light" position="bottom-center" />
     </QueryClientProvider>
   );
 }

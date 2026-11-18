@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { NeuralBackground } from "@/components/portfolio/NeuralBackground";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import {
@@ -36,7 +35,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="relative">
-      <NeuralBackground />
       <Nav />
       <main>
         <Hero />

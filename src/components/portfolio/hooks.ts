@@ -57,49 +57,14 @@ export function useCountUp(target: number, start: boolean, duration = 1600) {
   return value;
 }
 
-/** Cycles through words with a typewriter effect. */
-export function useTypewriter(words: string[], speed = 70, pause = 1800) {
-  const [text, setText] = useState(words[0] ?? "");
+/** Cycles an index through `length` items every `interval` ms. */
+export function useRotatingIndex(length: number, interval = 2600) {
+  const [i, setI] = useState(0);
   const reduced = usePrefersReducedMotion();
   useEffect(() => {
-    if (reduced) {
-      setText(words[0] ?? "");
-      return;
-    }
-    let wi = 0;
-    let ci = words[0]?.length ?? 0;
-    let deleting = true;
-    let timer: ReturnType<typeof setTimeout>;
-    const step = () => {
-      const word = words[wi] ?? "";
-      if (deleting) {
-        ci--;
-        if (ci <= 0) {
-          deleting = false;
-          wi = (wi + 1) % words.length;
-        }
-      } else {
-        ci++;
-        const next = words[wi] ?? "";
-        if (ci >= next.length) {
-          deleting = true;
-          setText(next);
-          timer = setTimeout(step, pause);
-          return;
-        }
-      }
-      setText((deleting ? word : (words[wi] ?? "")).slice(0, Math.max(ci, 0)));
-      timer = setTimeout(step, deleting ? speed / 2 : speed);
-    };
-    timer = setTimeout(step, pause);
-    return () => clearTimeout(timer);
-  }, [words, speed, pause, reduced]);
-  return text;
-}
-
-/** Cursor-tracking spotlight: writes --mx / --my on the element. */
-export function spotlightHandler(e: React.MouseEvent<HTMLElement>) {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+    if (reduced || length < 2) return;
+    const id = setInterval(() => setI((v) => (v + 1) % length), interval);
+    return () => clearInterval(id);
+  }, [length, interval, reduced]);
+  return i;
 }
